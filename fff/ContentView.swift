@@ -121,7 +121,8 @@ struct ContentView: View {
                             endPoint: .bottom
                         ))
                         .frame(height: isExpanded ? 60 : 52)
-                        .shadow(color: isExpanded ? Constants.backgroundColor : Color(hex: "#c3c3c3"), radius: 2, y: 2)
+                        .shadow(color: isExpanded ? Constants.backgroundColor : Color(hex: "#c3c3c3").opacity(0.5), radius: 1.5, y: 3)
+                        .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: isExpanded)
                     
                     HStack {
                         Circle()
@@ -147,17 +148,27 @@ struct ContentView: View {
                     }
                 }
                 .onTapGesture {
-                    withAnimation {
+                    withAnimation(.bouncy) {
                         isExpanded.toggle()
                     }
                 }
                 
                 if isExpanded {
-                    Text("Details about \(companyName) where I worked for \(monthsWorking).")
-                        .font(.caption2)
-                        .padding()
-//                        .transition(.push(from: isExpanded ? .bottom : .top))
-                        .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
+                    VStack {
+                        Text("Details about \(companyName) where I worked for \(monthsWorking).")
+                            .font(.caption2)
+                            .padding()
+                            .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(LinearGradient(
+                                gradient: Gradient(colors: [Constants.backgroundColor.opacity(0.2),
+                                                            Color(hex: "#f0f0f0"),
+                                                            Color(hex: "#f0f0f0")]),
+                                startPoint: .top,
+                                endPoint: .bottom
+                            ))
+                            .frame(height: isExpanded ? 60 : 52)
+                    }
                 }
             }
             .frame(maxWidth: .infinity)
