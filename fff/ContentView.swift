@@ -98,7 +98,7 @@ struct ContentView: View {
             }
         }
         .coordinateSpace(name: "scrollView")
-        .background(Color(hex: "#f9f9f9"))
+        .background(Constants.backgroundColor)
     }
     // MARK: - Views
     
@@ -115,9 +115,13 @@ struct ContentView: View {
                 ZStack(alignment: .leading) {
                     // Background
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: "#f0f0f0"))
-                        .frame(height: isExpanded ? 160 : 60)
-                        .shadow(color: Color(hex: "#c3c3c3"), radius: 2, y: 2)
+                        .fill(LinearGradient(
+                            gradient: Gradient(colors: [Color(hex: "#f0f0f0"), Constants.backgroundColor.opacity(isExpanded ? 0.2 : 0.9)]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ))
+                        .frame(height: isExpanded ? 60 : 52)
+                        .shadow(color: isExpanded ? Constants.backgroundColor : Color(hex: "#c3c3c3"), radius: 2, y: 2)
                     
                     HStack {
                         Circle()
@@ -140,21 +144,24 @@ struct ContentView: View {
                         // Expand / Collapse icon
                         Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                             .padding(.trailing, 15)
-                            .onTapGesture {
-                                withAnimation {
-                                    isExpanded.toggle()
-                                }
-                            }
+                    }
+                }
+                .onTapGesture {
+                    withAnimation {
+                        isExpanded.toggle()
                     }
                 }
                 
                 if isExpanded {
                     Text("Details about \(companyName) where I worked for \(monthsWorking).")
+                        .font(.caption2)
                         .padding()
-                        .transition(.opacity)
+//                        .transition(.push(from: isExpanded ? .bottom : .top))
+                        .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
                 }
             }
             .frame(maxWidth: .infinity)
+            .padding(.bottom, isExpanded ? 30 : 12)
         }
     }
     
