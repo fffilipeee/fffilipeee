@@ -24,9 +24,11 @@ struct ContentView: View {
             VStack {
                 // Used for tracking the scroll position and change apple logo color
                 GeometryReader { geometry in
-                    Color.clear.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scrollView")).minY)
+                    Color.clear.preference(key: ScrollOffsetPreferenceKey.self,
+                                           value: geometry.frame(in: .named("scrollView")).minY)
                 }
                 .frame(height: 0)
+                .id("headerGeometry")
                 
                 // Top Header
                 VStack {
@@ -48,6 +50,7 @@ struct ContentView: View {
                         // Companies Experience
                         ExpandableHeader(
                             companyColor: .green,
+                            logoImage: "toralarmLogo",
                             companyName: "TorAlarm",
                             periodWorking: "Present",
                             monthsWorking: "Oct 2022",
@@ -68,7 +71,7 @@ struct ContentView: View {
                             companyName: "MatchUp Influencer",
                             periodWorking: "4 yrs 9 mos",
                             monthsWorking: "Aug 2017\nApr 2022",
-                            role: "Director of Brand Stategy & Partnerships"
+                            role: "Director of Brand Stategy"
                         )
                         
                         ExpandableHeader(
@@ -94,8 +97,10 @@ struct ContentView: View {
             }
             .padding()
             .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                if scrollOffset != value {
-                    scrollOffset = value
+                print("value = \(value)")
+                let offsetY = max(0, value)
+                if scrollOffset != offsetY {
+                    scrollOffset = offsetY
                     useDefaultColor = false
                     updateColorForOffset()
                     resetScrollTimer()
@@ -109,6 +114,7 @@ struct ContentView: View {
     
     struct ExpandableHeader: View {
         var companyColor: Color
+        var logoImage: String?
         var companyName: String
         var periodWorking: String
         var monthsWorking: String
@@ -120,7 +126,7 @@ struct ContentView: View {
             VStack {
                 ZStack(alignment: .leading) {
                     // Background
-                    RoundedRectangle(cornerRadius: 8)
+                    RoundedRectangle(cornerRadius: 12)
                         .fill(LinearGradient(
                             gradient: Gradient(colors: [Color(hex: "#f0f0f0"), Constants.backgroundColor.opacity(isExpanded ? 0.2 : 0.9)]),
                             startPoint: .top,
@@ -131,18 +137,29 @@ struct ContentView: View {
                         .sensoryFeedback(.impact(flexibility: .soft, intensity: 1.0), trigger: isExpanded)
                     
                     HStack {
-                        Circle()
-                            .frame(width: 20)
+                        Image(logoImage ?? "")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: isExpanded ? 40 : 20, height: isExpanded ? 40 : 20)
+                            .clipShape(Circle())
                             .padding(.leading, 15)
-                            .foregroundColor(companyColor)
+                            .overlay {
+                                Circle()
+                                    .frame(width: isExpanded ? 40 : 20)
+                                    .padding(.leading, 15)
+                                    .foregroundColor(companyColor)
+                                    .opacity(isExpanded &&  logoImage != nil ? 0 : 1)
+                            }
+                        
                         VStack(alignment: .leading) {
                             Text(companyName)
-                                .font(.footnote)
+                                .font(.subheadline)
                                 .bold()
                             Text(role)
                                 .font(.caption2)
                                 .opacity(0.4)
                         }
+                        .padding(.leading, 5)
                         Spacer()
                         VStack(alignment: .trailing) {
                             Text(periodWorking)
@@ -164,17 +181,18 @@ struct ContentView: View {
                     }
                 }
                 .onTapGesture {
-                    withAnimation(.bouncy) {
+                    withAnimation {
                         isExpanded.toggle()
                     }
                 }
                 
                 if isExpanded {
                     VStack {
-                        Text("Details about \(companyName) where I worked for \(monthsWorking).")
-                            .font(.caption2)
-                            .padding()
-                            .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
+//                        Text("Details about \(companyName) where I worked for \(monthsWorking).")
+//                            .font(.caption2)
+//                            .padding()
+//                            .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
+                        ExperienceText()
                     }
                 }
             }
@@ -231,6 +249,7 @@ struct ContentView: View {
 struct ScrollOffsetPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        print("\(value)")
         value = nextValue()
     }
 }
