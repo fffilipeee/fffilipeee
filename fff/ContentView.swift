@@ -50,7 +50,8 @@ struct ContentView: View {
                             companyColor: .green,
                             companyName: "TorAlarm",
                             periodWorking: "Present",
-                            monthsWorking: "Oct 2022"
+                            monthsWorking: "Oct 2022",
+                            role: "iOS Developer"
                         )
                         .padding(.top)
                         
@@ -58,28 +59,32 @@ struct ContentView: View {
                             companyColor: .red,
                             companyName: "CI&T",
                             periodWorking: "3 mos",
-                            monthsWorking: "Apr 2022\nJul 2022"
+                            monthsWorking: "Apr 2022\nJul 2022",
+                            role: "iOS Developer"
                         )
                         
                         ExpandableHeader(
                             companyColor: Color(hex: "#c10e0e"),
                             companyName: "MatchUp Influencer",
                             periodWorking: "4 yrs 9 mos",
-                            monthsWorking: "Aug 2017\nApr 2022"
+                            monthsWorking: "Aug 2017\nApr 2022",
+                            role: "Director of Brand Stategy & Partnerships"
                         )
                         
                         ExpandableHeader(
                             companyColor: .black,
                             companyName: "pontobarraGAME",
                             periodWorking: "3 yrs, 4 mos",
-                            monthsWorking: "Oct 2014\nOct 2018"
+                            monthsWorking: "Oct 2014\nOct 2018",
+                            role: "Co-creator"
                         )
                         
                         ExpandableHeader(
                             companyColor: .blue,
                             companyName: "Instituto Alfa e Beto",
                             periodWorking: "4 months",
-                            monthsWorking: "Nov 2015\nFeb 2016"
+                            monthsWorking: "Nov 2015\nFeb 2016",
+                            role: "Intern"
                         )
 
                     }
@@ -107,6 +112,7 @@ struct ContentView: View {
         var companyName: String
         var periodWorking: String
         var monthsWorking: String
+        var role: String
         
         @State private var isExpanded: Bool = false
         
@@ -120,18 +126,23 @@ struct ContentView: View {
                             startPoint: .top,
                             endPoint: .bottom
                         ))
-                        .frame(height: isExpanded ? 60 : 52)
+                        .frame(height: isExpanded ? 80 : 72)
                         .shadow(color: isExpanded ? Constants.backgroundColor : Color(hex: "#c3c3c3").opacity(0.5), radius: 1.5, y: 3)
-                        .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: isExpanded)
+                        .sensoryFeedback(.impact(flexibility: .soft, intensity: 1.0), trigger: isExpanded)
                     
                     HStack {
                         Circle()
                             .frame(width: 20)
                             .padding(.leading, 15)
                             .foregroundColor(companyColor)
-                        Text(companyName)
-                            .font(.footnote)
-                            .bold()
+                        VStack(alignment: .leading) {
+                            Text(companyName)
+                                .font(.footnote)
+                                .bold()
+                            Text(role)
+                                .font(.caption2)
+                                .opacity(0.4)
+                        }
                         Spacer()
                         VStack(alignment: .trailing) {
                             Text(periodWorking)
@@ -143,8 +154,13 @@ struct ContentView: View {
                         .padding(.trailing, 15)
                         
                         // Expand / Collapse icon
-                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .rotationEffect(.degrees(isExpanded ? 180 : 0))
+                            .opacity(0.4)
+                            .frame(width: 10, height: 5)
                             .padding(.trailing, 15)
+                        
                     }
                 }
                 .onTapGesture {
@@ -159,15 +175,6 @@ struct ContentView: View {
                             .font(.caption2)
                             .padding()
                             .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(LinearGradient(
-                                gradient: Gradient(colors: [Constants.backgroundColor.opacity(0.2),
-                                                            Color(hex: "#f0f0f0"),
-                                                            Color(hex: "#f0f0f0")]),
-                                startPoint: .top,
-                                endPoint: .bottom
-                            ))
-                            .frame(height: isExpanded ? 60 : 52)
                     }
                 }
             }
