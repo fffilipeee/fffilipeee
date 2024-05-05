@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
-class Constants {
+class AppColors {
     static let backgroundColor: Color = Color(hex: "#f9f9f9")
+    static let gray: Color = Color(hex: "#c3c3c3")
+    static let darkGray: Color = Color(hex: "#f0f0f0")
 }

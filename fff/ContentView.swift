@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var scrollOffset: CGFloat = 0
     @State private var lastScrollOffset: CGFloat = 0
     @State private var resetColorTimer: AnyCancellable?
-    @State private var currentColor: Color = Color(hex: "#c3c3c3")
+    @State private var currentColor: Color = AppColors.gray
     @State private var useDefaultColor: Bool = false
     let animationDuration: Double = 0.1
     let horizontalSpacing: Int = 5
@@ -35,16 +35,16 @@ struct ContentView: View {
                     VStack {
                         // Header Profile
                         Circle()
-                            .foregroundStyle(Color(hex: "#c3c3c3"))
+                            .foregroundStyle(AppColors.gray)
                             .frame(width: 100)
                             .padding()
                         Text("Filipe Barbosa Nunes")
                         HStack {
                             Text("iOS Developer")
-                                .foregroundStyle(Color(hex: "#c3c3c3"))
+                                .foregroundStyle(AppColors.gray)
                             Image(systemName: "apple.logo")
                                 .imageScale(.small)
-                                .foregroundStyle(useDefaultColor ? Color(hex: "#c3c3c3") : currentColor)
+                                .foregroundStyle(useDefaultColor ? AppColors.gray : currentColor)
                         }
                         
                         // Companies Experience
@@ -89,10 +89,7 @@ struct ContentView: View {
                             monthsWorking: "Nov 2015\nFeb 2016",
                             role: "Game Developer Intern"
                         )
-
                     }
-                    
-
                 }
             }
             .padding()
@@ -108,7 +105,7 @@ struct ContentView: View {
             }
         }
         .coordinateSpace(name: "scrollView")
-        .background(Constants.backgroundColor)
+        .background(AppColors.backgroundColor)
     }
     // MARK: - Views
     
@@ -128,12 +125,12 @@ struct ContentView: View {
                     // Background
                     RoundedRectangle(cornerRadius: 12)
                         .fill(LinearGradient(
-                            gradient: Gradient(colors: [Color(hex: "#f0f0f0"), Constants.backgroundColor.opacity(isExpanded ? 0.2 : 0.9)]),
+                            gradient: Gradient(colors: [AppColors.darkGray, AppColors.backgroundColor.opacity(isExpanded ? 0.2 : 0.9)]),
                             startPoint: .top,
                             endPoint: .bottom
                         ))
                         .frame(height: isExpanded ? 80 : 72)
-                        .shadow(color: isExpanded ? Constants.backgroundColor : Color(hex: "#c3c3c3").opacity(0.5), radius: 1.5, y: 3)
+                        .shadow(color: isExpanded ? AppColors.backgroundColor : AppColors.gray.opacity(0.5), radius: 1.5, y: 3)
                         .sensoryFeedback(.impact(flexibility: .soft, intensity: 1.0), trigger: isExpanded)
                     
                     HStack {
@@ -207,7 +204,7 @@ struct ContentView: View {
                     .foregroundStyle(.green)
                 Image(systemName: "apple.logo")
                     .imageScale(.small)
-                    .foregroundStyle(Color(hex: "#c3c3c3"))
+                    .foregroundStyle(AppColors.gray)
                 Image(systemName: "apple.logo")
                     .imageScale(.small)
                     .foregroundStyle(.red)
