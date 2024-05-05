@@ -87,7 +87,7 @@ struct ContentView: View {
                             companyName: "Instituto Alfa e Beto",
                             periodWorking: "4 months",
                             monthsWorking: "Nov 2015\nFeb 2016",
-                            role: "Intern"
+                            role: "Game Developer Intern"
                         )
 
                     }
@@ -152,10 +152,10 @@ struct ContentView: View {
                             }
                         
                         VStack(alignment: .leading) {
-                            Text(companyName)
+                            Text(role)
                                 .font(.subheadline)
                                 .bold()
-                            Text(role)
+                            Text(companyName)
                                 .font(.caption2)
                                 .opacity(0.4)
                         }
@@ -186,15 +186,10 @@ struct ContentView: View {
                     }
                 }
                 
-                if isExpanded {
-                    VStack {
-//                        Text("Details about \(companyName) where I worked for \(monthsWorking).")
-//                            .font(.caption2)
-//                            .padding()
-//                            .transition(.asymmetric(insertion: .push(from: .top), removal: .push(from: .bottom)))
-                        ExperienceText()
-                    }
-                }
+                ExperienceText()
+                    .opacity(isExpanded ? 1 : 0)
+                    .frame(height: isExpanded ? nil : 0, alignment: .top)
+                    .clipped()
             }
             .frame(maxWidth: .infinity)
             .padding(.bottom, isExpanded ? 30 : 12)
