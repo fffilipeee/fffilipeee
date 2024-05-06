@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 class AppColors {
-    static let backgroundColor: Color = Color(hex: "#f9f9f9")
-    static let gray: Color = Color(hex: "#c3c3c3")
-    static let darkGray: Color = Color(hex: "#f0f0f0")
+    static let backgroundColor: Color = Color("background")
+    static let mediumGray: Color = Color("mediumGray")
+    static let lightGray: Color = Color("lightGray")
+    static let shadow: Color = Color("shadow")
+    static let cellTop: Color = Color("cellTop")
 }

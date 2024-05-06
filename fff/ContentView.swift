@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var scrollOffset: CGFloat = 0
     @State private var lastScrollOffset: CGFloat = 0
     @State private var resetColorTimer: AnyCancellable?
-    @State private var currentColor: Color = AppColors.gray
+    @State private var currentColor: Color = AppColors.mediumGray
     @State private var useDefaultColor: Bool = false
     let animationDuration: Double = 0.1
     let horizontalSpacing: Int = 5
@@ -35,16 +35,16 @@ struct ContentView: View {
                     VStack {
                         // Header Profile
                         Circle()
-                            .foregroundStyle(AppColors.gray)
+                            .foregroundStyle(AppColors.mediumGray)
                             .frame(width: 100)
                             .padding()
                         Text("Filipe Barbosa Nunes")
                         HStack {
                             Text("iOS Developer")
-                                .foregroundStyle(AppColors.gray)
+                                .foregroundStyle(AppColors.mediumGray)
                             Image(systemName: "apple.logo")
                                 .imageScale(.small)
-                                .foregroundStyle(useDefaultColor ? AppColors.gray : currentColor)
+                                .foregroundStyle(useDefaultColor ? AppColors.mediumGray : currentColor)
                         }
                         
                         // Companies Experience
@@ -125,24 +125,24 @@ struct ContentView: View {
                     // Background
                     RoundedRectangle(cornerRadius: 12)
                         .fill(LinearGradient(
-                            gradient: Gradient(colors: [AppColors.darkGray, AppColors.backgroundColor.opacity(isExpanded ? 0.2 : 0.9)]),
+                            gradient: Gradient(colors: [AppColors.cellTop, AppColors.backgroundColor]),
                             startPoint: .top,
                             endPoint: .bottom
                         ))
                         .frame(height: isExpanded ? 80 : 72)
-                        .shadow(color: isExpanded ? AppColors.backgroundColor : AppColors.gray.opacity(0.5), radius: 1.5, y: 3)
+                        .shadow(color: isExpanded ? .clear : AppColors.shadow, radius: 1.5, y: 3)
                         .sensoryFeedback(.impact(flexibility: .soft, intensity: 1.0), trigger: isExpanded)
                     
                     HStack {
                         Image(logoImage ?? "")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: isExpanded ? 40 : 20, height: isExpanded ? 40 : 20)
+                            .frame(width: isExpanded ? 40 : 15)
                             .clipShape(Circle())
                             .padding(.leading, 15)
                             .overlay {
                                 Circle()
-                                    .frame(width: isExpanded ? 40 : 20)
+                                    .frame(width: isExpanded ? 40 : 15)
                                     .padding(.leading, 15)
                                     .foregroundColor(companyColor)
                                     .opacity(isExpanded &&  logoImage != nil ? 0 : 1)
@@ -189,7 +189,7 @@ struct ContentView: View {
                     .clipped()
             }
             .frame(maxWidth: .infinity)
-            .padding(.bottom, isExpanded ? 30 : 12)
+            .padding(.bottom, isExpanded ? 30 : 1 )
         }
     }
     
@@ -204,7 +204,7 @@ struct ContentView: View {
                     .foregroundStyle(.green)
                 Image(systemName: "apple.logo")
                     .imageScale(.small)
-                    .foregroundStyle(AppColors.gray)
+                    .foregroundStyle(AppColors.mediumGray)
                 Image(systemName: "apple.logo")
                     .imageScale(.small)
                     .foregroundStyle(.red)
