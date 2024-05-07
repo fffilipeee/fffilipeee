@@ -34,10 +34,6 @@ struct ExperienceText: View {
     }
 }
 
-#Preview {
-    ExperienceText()
-}
-
 struct TextDivider: View {
     var body: some View {
         Rectangle()

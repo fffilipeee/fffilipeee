@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1227AD612BE6E8D900B88F1C /* ExperienceText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227AD602BE6E8D900B88F1C /* ExperienceText.swift */; };
+		1227AD652BEAB57400B88F1C /* ExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227AD642BEAB57400B88F1C /* ExpandableHeader.swift */; };
 		D4384B832BDEB421006C824F /* fffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4384B822BDEB421006C824F /* fffApp.swift */; };
 		D4384B852BDEB421006C824F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4384B842BDEB421006C824F /* ContentView.swift */; };
 		D4384B872BDEB423006C824F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4384B862BDEB423006C824F /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		1227AD602BE6E8D900B88F1C /* ExperienceText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceText.swift; sourceTree = "<group>"; };
+		1227AD642BEAB57400B88F1C /* ExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeader.swift; sourceTree = "<group>"; };
 		D4384B7F2BDEB421006C824F /* fff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4384B822BDEB421006C824F /* fffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fffApp.swift; sourceTree = "<group>"; };
 		D4384B842BDEB421006C824F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1227AD622BEAB51100B88F1C /* Reusable Elements */ = {
+			isa = PBXGroup;
+			children = (
+				1227AD602BE6E8D900B88F1C /* ExperienceText.swift */,
+				1227AD642BEAB57400B88F1C /* ExpandableHeader.swift */,
+			);
+			path = "Reusable Elements";
+			sourceTree = "<group>";
+		};
+		1227AD632BEAB54900B88F1C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D4384B902BDEB7D8006C824F /* Color+Extensions.swift */,
+				D4BC812C2BE4288700B5F162 /* AppColors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		D4384B762BDEB421006C824F = {
 			isa = PBXGroup;
 			children = (
@@ -57,13 +77,12 @@
 		D4384B812BDEB421006C824F /* fff */ = {
 			isa = PBXGroup;
 			children = (
+				1227AD632BEAB54900B88F1C /* Utils */,
+				1227AD622BEAB51100B88F1C /* Reusable Elements */,
 				D4384B822BDEB421006C824F /* fffApp.swift */,
 				D4384B842BDEB421006C824F /* ContentView.swift */,
 				D4384B862BDEB423006C824F /* Assets.xcassets */,
 				D4384B882BDEB423006C824F /* Preview Content */,
-				D4384B902BDEB7D8006C824F /* Color+Extensions.swift */,
-				D4BC812C2BE4288700B5F162 /* AppColors.swift */,
-				1227AD602BE6E8D900B88F1C /* ExperienceText.swift */,
 			);
 			path = fff;
 			sourceTree = "<group>";
@@ -146,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1227AD652BEAB57400B88F1C /* ExpandableHeader.swift in Sources */,
 				D4384B852BDEB421006C824F /* ContentView.swift in Sources */,
 				D4384B832BDEB421006C824F /* fffApp.swift in Sources */,
 				1227AD612BE6E8D900B88F1C /* ExperienceText.swift in Sources */,
