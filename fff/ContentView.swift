@@ -9,22 +9,41 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
+    @State private var selectedTab: Int = 0
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             WorkView()
                 .tabItem {
                     Label("Work", systemImage: "bag.circle")
                 }
+                .tag(0)
 
             StudyView()
                 .tabItem {
                     Label("Study", systemImage: "pencil.tip.crop.circle")
                 }
+                .tag(1)
             
             AccomplishmentView()
                 .tabItem {
                     Label("Highlights", systemImage: "staroflife.circle.fill")
                 }
+                .tag(2)
+        }
+        .accentColor(selectedColor())
+    }
+
+    private func selectedColor() -> Color {
+        switch selectedTab {
+        case 0: // Work
+            return .blue
+        case 1: // Study
+            return .green
+        case 2: // Highlights
+            return .yellow
+        default:
+            return .blue
         }
     }
 }
