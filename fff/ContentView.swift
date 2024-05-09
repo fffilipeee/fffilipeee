@@ -23,9 +23,7 @@ struct ContentView: View {
             
             AccomplishmentView()
                 .tabItem {
-//                    Label("Highlights", systemImage: "wand.and.stars.inverse")
-                    Label("Highlights", systemImage: "star.circle.fill")
-//                    star.circle.fill
+                    Label("Highlights", systemImage: "staroflife.circle.fill")
                 }
         }
     }
