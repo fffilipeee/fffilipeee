@@ -76,17 +76,30 @@ struct WorkView: View {
                 VStack {
                     VStack {
                         // Header Profile
-                        Circle()
-                            .foregroundStyle(AppColors.mediumGray)
-                            .frame(width: 100)
-                            .padding()
-                        Text("Filipe Barbosa Nunes")
-                        HStack {
-                            Text("iOS Developer")
-                                .foregroundStyle(AppColors.mediumGray)
-                            Image(systemName: "apple.logo")
-                                .imageScale(.small)
-                                .foregroundStyle(useDefaultColor ? AppColors.mediumGray : currentColor)
+//                        Circle()
+//                            .foregroundStyle(AppColors.mediumGray)
+//                            .frame(width: 100)
+//                            .padding()
+//                        Text("Filipe Barbosa Nunes")
+//                        HStack {
+//                            Text("iOS Developer")
+//                                .foregroundStyle(AppColors.mediumGray)
+//                            Image(systemName: "apple.logo")
+//                                .imageScale(.small)
+//                                .foregroundStyle(useDefaultColor ? AppColors.mediumGray : currentColor)
+//                        }
+                        
+                        ZStack {
+                            Rectangle()
+                                .fill(LinearGradient(
+                                    gradient: Gradient(colors: [Color.black, Color.black.opacity(0)]),
+                                    startPoint: .bottom,
+                                    endPoint: .top)
+                                )
+                                .frame(width: 15, height: 150)
+                                .zIndex(1)
+                                .offset(y: -200)
+                            InvitationCard()
                         }
                         
                         // Companies Experience

@@ -80,6 +80,7 @@ struct DottedBackground: View {
 
 struct InvitationCard: View {
     let sideSize: CGFloat = 200
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack {
@@ -87,15 +88,7 @@ struct InvitationCard: View {
                 .fill(AppColors.backgroundColor)
                 .ignoresSafeArea(.all)
             
-            DottedBackground()
-                .ignoresSafeArea(.all)
-            
             ZStack(alignment: .top) {
-                Rectangle()
-                    .frame(width: 10, height: 320)
-                    .zIndex(2)
-                    .offset(y: -302)
-                
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.black.opacity(0.1))
                     .frame(width: 45, height: 15)
@@ -109,19 +102,30 @@ struct InvitationCard: View {
                         .shadow(color: .black.opacity(0.1), radius: 8.5, y: 10)
                         .overlay {
                             VStack(spacing: 0) {
-                                Circle()
-                                    .fill(AppColors.mediumGray)
-                                    .frame(width: 100)
-                                    .padding(.vertical, 20)
-                                    .offset(y: -12)
-                                    
-                            Text("Filipe Barbosa Nunes")
+                                ZStack {
+                                    Circle()
+                                        .fill(AppColors.mediumGray)
+                                        .frame(width: 120)
+                                        .padding(.vertical, 20)
+                                        .offset(y: -12)
+                                        .overlay {
+                                            Image(colorScheme == .light ? "avatarPhoto" : "avatarIllustration")
+                                                .resizable()
+                                                .scaledToFill()
+                                                .scaleEffect(1.3)
+                                                .clipShape(Circle())
+                                        }
+                                }
+                                .padding(.top)
+                                        
+                                
+                                Text("Filipe Barbosa Nunes")
                                 Text("iOS Developer")
                                     .foregroundStyle(AppColors.mediumGray)
                                 Image(systemName: "apple.logo")
                                     .imageScale(.large)
-                                    .offset(y: 30)
                                     .foregroundStyle(AppColors.mediumGray)
+                                    .padding(.top, 5)
                             }
                         }
                         .background {
