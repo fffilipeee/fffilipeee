@@ -10,6 +10,7 @@ import SwiftUI
 struct AchievementCard: View {
     let sideSize: CGFloat = 160
     var title: String
+    @State private var isModalPresented = false
     
     var body: some View {
         ZStack {
@@ -37,103 +38,26 @@ struct AchievementCard: View {
                 }
             }
         }
-    }
-}
-
-struct Dot: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.addEllipse(in: rect)
-        return path
-    }
-}
-
-struct DottedBackground: View {
-    var dotSize: CGFloat = 2
-    var spacing: CGFloat = 25
-    
-    var body: some View {
-        GeometryReader { geometry in
-            let columns = Int(geometry.size.width / (dotSize + spacing)) + 1
-            let rows = Int(geometry.size.height / (dotSize + spacing)) + 1
-
-            VStack(spacing: spacing) {
-                ForEach(0..<rows, id: \.self) { row in
-                    HStack(spacing: spacing) {
-                        ForEach(0..<columns, id: \.self) { column in
-                            Dot()
-                                .frame(width: dotSize, height: dotSize)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-            }
+        .onTapGesture {
+            isModalPresented = true
+        }
+        .sheet(isPresented: $isModalPresented) {
+            DetailModal(title: title)
         }
     }
 }
 
-struct InvitationCard: View {
-    let sideSize: CGFloat = 200
-    @Environment(\.colorScheme) var colorScheme
-    @State private var isDefaultImage: Bool = true
+struct DetailModal: View {
+    var title: String
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(AppColors.backgroundColor)
-                .ignoresSafeArea(.all)
+        VStack {
+            RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
+            Text(title)
             
-            ZStack(alignment: .top) {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.black.opacity(0.1))
-                    .frame(width: 45, height: 15)
-                    .padding(.top, 15)
-                    .zIndex(1)
-                
-                ZStack(alignment: .top) {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(AppColors.cellTop)
-                        .frame(width: sideSize, height: sideSize * 1.4)
-                        .shadow(color: .black.opacity(0.1), radius: 8.5, y: 10)
-                        .overlay {
-                            VStack(spacing: 0) {
-                                ZStack {
-                                    Circle()
-                                        .fill(AppColors.mediumGray)
-                                        .frame(width: 120)
-                                        .padding(.vertical, 20)
-                                        .offset(y: -12)
-                                        .overlay {
-                                            // Avatar Pic
-                                            Image(isDefaultImage ? "avatarPhoto" : "avatarIllustration")
-                                                 .resizable()
-                                                 .scaledToFill()
-                                                 .scaleEffect(1.3)
-                                                 .clipShape(Circle())
-                                                 .onTapGesture { isDefaultImage.toggle() }
-                                        }
-                                }
-                                .padding(.top)
-                                        
-                                
-                                Text("Filipe Barbosa Nunes")
-                                Text("iOS Developer")
-                                    .foregroundStyle(AppColors.mediumGray)
-                                Image(systemName: "apple.logo")
-                                    .imageScale(.large)
-                                    .foregroundStyle(AppColors.mediumGray)
-                                    .padding(.top, 5)
-                            }
-                        }
-                        .background {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(AppColors.mediumGray)
-                                .frame(width: sideSize, height: sideSize * 1.4)
-                                .offset(y: 2)
-                        }
-                }
-            }
+            Spacer()
         }
+        .padding()
     }
 }
 
