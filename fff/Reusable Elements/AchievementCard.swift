@@ -9,24 +9,11 @@ import SwiftUI
 
 struct AchievementCard: View {
     let sideSize: CGFloat = 160
+    var title: String
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(AppColors.backgroundColor)
-                .ignoresSafeArea(.all)
-            
-            DottedBackground()
-                .ignoresSafeArea(.all)
-            
             ZStack(alignment: .topTrailing) {
-                Circle()
-                    .fill(.blue)
-                    .frame(width: 45, height: 45)
-                    .padding(.trailing, -15)
-                    .padding(.top, -15)
-                    .zIndex(1)
-                
                 ZStack(alignment: .top) {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(LinearGradient(
@@ -34,11 +21,18 @@ struct AchievementCard: View {
                             startPoint: .top,
                             endPoint: .bottom
                         ))
-                        .frame(width: sideSize, height: sideSize)
+                        .frame(width: sideSize * 1.3, height: sideSize)
                         .shadow(color: AppColors.shadow, radius: 1.5, y: 3)
                         .overlay {
-                            Text("College Degree\nComputer Science Bachelor's Degree")
-                                .padding()
+                            VStack {
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                Text(title)
+                                    .font(.system(size: 16))
+                                    .fontWeight(.bold)
+                                    .padding()
+                            }
                         }
                 }
             }
@@ -81,6 +75,7 @@ struct DottedBackground: View {
 struct InvitationCard: View {
     let sideSize: CGFloat = 200
     @Environment(\.colorScheme) var colorScheme
+    @State private var isDefaultImage: Bool = true
     
     var body: some View {
         ZStack {
@@ -109,11 +104,13 @@ struct InvitationCard: View {
                                         .padding(.vertical, 20)
                                         .offset(y: -12)
                                         .overlay {
-                                            Image(colorScheme == .light ? "avatarPhoto" : "avatarIllustration")
-                                                .resizable()
-                                                .scaledToFill()
-                                                .scaleEffect(1.3)
-                                                .clipShape(Circle())
+                                            // Avatar Pic
+                                            Image(isDefaultImage ? "avatarPhoto" : "avatarIllustration")
+                                                 .resizable()
+                                                 .scaledToFill()
+                                                 .scaleEffect(1.3)
+                                                 .clipShape(Circle())
+                                                 .onTapGesture { isDefaultImage.toggle() }
                                         }
                                 }
                                 .padding(.top)
@@ -140,7 +137,44 @@ struct InvitationCard: View {
     }
 }
 
+struct AchievementCarousel: View {
+    let achievements = [
+        "Computer Science Bachelor's Degree",
+        "1 Game with over 1M+ Downloads on Google Play",
+        "2nd Highest GPA on B.S. Computer Sciente degree within 2016's 1st semester",
+        "1 Year of scholarship in U.C. Davis to study Computer Science"
+    ]
+    
+    @State private var offset: CGFloat = 0
+    let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
+    
+    var body: some View {
+        GeometryReader { geometry in
+            let cardWidth: CGFloat = 160 * 1.3
+            let spacing: CGFloat = 20
+            let totalWidth = cardWidth + spacing
+
+            HStack(spacing: spacing) {
+                ForEach(0..<achievements.count * 2, id: \.self) { index in
+                    AchievementCard(title: achievements[index % achievements.count])
+                }
+            }
+            .offset(x: offset)
+            .onReceive(timer) { _ in
+                withAnimation(.smooth) {
+                    offset -= 1
+                    if abs(offset) >= totalWidth * CGFloat(achievements.count) {
+                        offset = 0
+                    }
+                }
+            }
+        }
+        .frame(height: 160)
+    }
+}
+
 #Preview {
 //    AchievementCard()
-    InvitationCard()
+//    InvitationCard()
+    AchievementCarousel()
 }

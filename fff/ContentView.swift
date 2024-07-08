@@ -75,20 +75,7 @@ struct WorkView: View {
                 // Top Header
                 VStack {
                     VStack {
-                        // Header Profile
-//                        Circle()
-//                            .foregroundStyle(AppColors.mediumGray)
-//                            .frame(width: 100)
-//                            .padding()
-//                        Text("Filipe Barbosa Nunes")
-//                        HStack {
-//                            Text("iOS Developer")
-//                                .foregroundStyle(AppColors.mediumGray)
-//                            Image(systemName: "apple.logo")
-//                                .imageScale(.small)
-//                                .foregroundStyle(useDefaultColor ? AppColors.mediumGray : currentColor)
-//                        }
-                        
+                        // Card ribbon
                         ZStack {
                             Rectangle()
                                 .fill(LinearGradient(
@@ -210,7 +197,11 @@ struct WorkView: View {
 
 struct StudyView: View {
     var body: some View {
-        Text("Here goes the study experience ")
+        ZStack {
+            DottedBackground()
+                .ignoresSafeArea(.all)
+            AchievementCarousel()
+        }
     }
 }
 
