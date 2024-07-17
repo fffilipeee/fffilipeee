@@ -10,6 +10,7 @@
 		1227AD612BE6E8D900B88F1C /* ExperienceText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227AD602BE6E8D900B88F1C /* ExperienceText.swift */; };
 		1227AD652BEAB57400B88F1C /* ExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227AD642BEAB57400B88F1C /* ExpandableHeader.swift */; };
 		1227AD672BEC20DE00B88F1C /* AchievementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227AD662BEC20DE00B88F1C /* AchievementCard.swift */; };
+		72E1E78C2C4840FA005068A3 /* JobExperience.json in Resources */ = {isa = PBXBuildFile; fileRef = 72E1E78B2C4840E4005068A3 /* JobExperience.json */; };
 		72E6D53C2C3C6E2200BA3CF6 /* DottedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6D53B2C3C6E1E00BA3CF6 /* DottedBackground.swift */; };
 		72E6D53E2C3C6FA000BA3CF6 /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6D53D2C3C6FA000BA3CF6 /* InvitationCard.swift */; };
 		72E6D5422C3C715500BA3CF6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6D5412C3C715500BA3CF6 /* LaunchScreen.swift */; };
@@ -25,6 +26,7 @@
 		1227AD602BE6E8D900B88F1C /* ExperienceText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceText.swift; sourceTree = "<group>"; };
 		1227AD642BEAB57400B88F1C /* ExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeader.swift; sourceTree = "<group>"; };
 		1227AD662BEC20DE00B88F1C /* AchievementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCard.swift; sourceTree = "<group>"; };
+		72E1E78B2C4840E4005068A3 /* JobExperience.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JobExperience.json; sourceTree = "<group>"; };
 		72E6D53B2C3C6E1E00BA3CF6 /* DottedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedBackground.swift; sourceTree = "<group>"; };
 		72E6D53D2C3C6FA000BA3CF6 /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
 		72E6D5412C3C715500BA3CF6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		72E1E78A2C4840C9005068A3 /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				72E1E78B2C4840E4005068A3 /* JobExperience.json */,
+			);
+			path = JSONs;
+			sourceTree = "<group>";
+		};
 		D4384B762BDEB421006C824F = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 		D4384B812BDEB421006C824F /* fff */ = {
 			isa = PBXGroup;
 			children = (
+				72E1E78A2C4840C9005068A3 /* JSONs */,
 				1227AD632BEAB54900B88F1C /* Utils */,
 				1227AD622BEAB51100B88F1C /* Reusable Elements */,
 				D4384B822BDEB421006C824F /* fffApp.swift */,
@@ -165,6 +176,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72E1E78C2C4840FA005068A3 /* JobExperience.json in Resources */,
 				D4384B8A2BDEB423006C824F /* Preview Assets.xcassets in Resources */,
 				D4384B872BDEB423006C824F /* Assets.xcassets in Resources */,
 			);

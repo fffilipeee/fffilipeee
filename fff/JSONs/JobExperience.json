@@ -1,0 +1,43 @@
+[
+    {
+        "companyColor": "#00FF00",
+        "logoImage": "toralarmLogo",
+        "companyName": "TorAlarm",
+        "periodWorking": "Present",
+        "monthsWorking": "Oct 2022",
+        "role": "iOS Developer",
+        "description": "Description for TorAlarm."
+    },
+    {
+        "companyColor": "#FF0000",
+        "companyName": "CI&T",
+        "periodWorking": "3 mos",
+        "monthsWorking": "Apr 2022\nJul 2022",
+        "role": "iOS Developer",
+        "description": "Description for CI&T."
+    },
+    {
+        "companyColor": "#c10e0e",
+        "companyName": "MatchUp Influencer",
+        "periodWorking": "4 yrs 9 mos",
+        "monthsWorking": "Aug 2017\nApr 2022",
+        "role": "Director of Brand Strategy",
+        "description": "Description for MatchUp Influencer."
+    },
+    {
+        "companyColor": "#000000",
+        "companyName": "pontobarraGAME",
+        "periodWorking": "3 yrs, 4 mos",
+        "monthsWorking": "Oct 2014\nOct 2018",
+        "role": "Co-creator",
+        "description": "Description for pontobarraGAME."
+    },
+    {
+        "companyColor": "#0000FF",
+        "companyName": "Instituto Alfa e Beto",
+        "periodWorking": "4 months",
+        "monthsWorking": "Nov 2015\nFeb 2016",
+        "role": "Game Developer Intern",
+        "description": "Description for Instituto Alfa e Beto."
+    }
+]
