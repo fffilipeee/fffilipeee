@@ -1,5 +1,6 @@
 [
     {
+        "id": "6f42e1a4-5d71-4b7f-a6f2-4d8a5f7d2b1c",
         "companyColor": "#00FF00",
         "logoImage": "toralarmLogo",
         "companyName": "TorAlarm",
@@ -9,6 +10,7 @@
         "description": "Description for TorAlarm."
     },
     {
+        "id": "e8c5e8a9-6c5e-45e3-b5c9-2b5e4c5d2a1c",
         "companyColor": "#FF0000",
         "companyName": "CI&T",
         "periodWorking": "3 mos",
@@ -17,6 +19,7 @@
         "description": "Description for CI&T."
     },
     {
+        "id": "d1c7e9a6-7d8a-45f3-b5c2-4d8b5e7a1d9f",
         "companyColor": "#c10e0e",
         "companyName": "MatchUp Influencer",
         "periodWorking": "4 yrs 9 mos",
@@ -25,6 +28,7 @@
         "description": "Description for MatchUp Influencer."
     },
     {
+        "id": "f8d7e1a4-6b5c-45f3-b5e1-4d8c5a7b2a9d",
         "companyColor": "#000000",
         "companyName": "pontobarraGAME",
         "periodWorking": "3 yrs, 4 mos",
@@ -33,6 +37,7 @@
         "description": "Description for pontobarraGAME."
     },
     {
+        "id": "a1c7e9a6-7d8a-45f3-b5c2-4d8b5e7a1d9f",
         "companyColor": "#0000FF",
         "companyName": "Instituto Alfa e Beto",
         "periodWorking": "4 months",
