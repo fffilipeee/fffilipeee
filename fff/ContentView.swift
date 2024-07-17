@@ -10,10 +10,11 @@ import Combine
 
 struct ContentView: View {
     @State private var selectedTab: Int = 0
+    let viewModel = ViewModel()
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            WorkView()
+            WorkView(viewModel: viewModel)
                 .tabItem {
                     Label("Work", systemImage: "bag.circle")
                 }
@@ -51,11 +52,15 @@ struct ContentView: View {
 // MARK: - Views
 
 struct WorkView: View {
+    @ObservedObject var viewModel: ViewModel
     @State private var scrollOffset: CGFloat = 0
     @State private var lastScrollOffset: CGFloat = 0
     @State private var resetColorTimer: AnyCancellable?
     @State private var currentColor: Color = AppColors.mediumGray
     @State private var useDefaultColor: Bool = false
+    @State private var experiences: [JobExperience] = []
+    @State private var isLoading = true
+    @State private var errorMessage: String?
     let animationDuration: Double = 0.1
     let horizontalSpacing: Int = 5
     
@@ -64,7 +69,6 @@ struct WorkView: View {
     var body: some View {
         ScrollView {
             VStack {
-                // Used for tracking the scroll position and change apple logo color
                 GeometryReader { geometry in
                     Color.clear.preference(key: ScrollOffsetPreferenceKey.self,
                                            value: geometry.frame(in: .named("scrollView")).minY)
@@ -72,10 +76,8 @@ struct WorkView: View {
                 .frame(height: 0)
                 .id("headerGeometry")
                 
-                // Top Header
                 VStack {
                     VStack {
-                        // Card ribbon
                         ZStack {
                             Rectangle()
                                 .fill(LinearGradient(
@@ -88,55 +90,31 @@ struct WorkView: View {
                                 .offset(y: -200)
                             InvitationCard()
                         }
+                        .padding(.bottom)
                         
-                        // Companies Experience
-                        ExpandableHeader(
-                            companyColor: .green,
-                            logoImage: "toralarmLogo",
-                            companyName: "TorAlarm",
-                            periodWorking: "Present",
-                            monthsWorking: "Oct 2022",
-                            role: "iOS Developer"
-                        )
-                        .padding(.top)
-                        
-                        ExpandableHeader(
-                            companyColor: .red,
-                            companyName: "CI&T",
-                            periodWorking: "3 mos",
-                            monthsWorking: "Apr 2022\nJul 2022",
-                            role: "iOS Developer"
-                        )
-                        
-                        ExpandableHeader(
-                            companyColor: Color(hex: "#c10e0e"),
-                            companyName: "MatchUp Influencer",
-                            periodWorking: "4 yrs 9 mos",
-                            monthsWorking: "Aug 2017\nApr 2022",
-                            role: "Director of Brand Stategy"
-                        )
-                        
-                        ExpandableHeader(
-                            companyColor: .black,
-                            companyName: "pontobarraGAME",
-                            periodWorking: "3 yrs, 4 mos",
-                            monthsWorking: "Oct 2014\nOct 2018",
-                            role: "Co-creator"
-                        )
-                        
-                        ExpandableHeader(
-                            companyColor: .blue,
-                            companyName: "Instituto Alfa e Beto",
-                            periodWorking: "4 months",
-                            monthsWorking: "Nov 2015\nFeb 2016",
-                            role: "Game Developer Intern"
-                        )
+                        if isLoading {
+                            Text("Loading...")
+                                .padding()
+                        } else if let errorMessage = errorMessage {
+                            Text("Error: \(errorMessage)")
+                        } else {
+                            ForEach(experiences) { experience in
+                                ExpandableHeader(
+                                    companyColor: Color(hex: experience.companyColor),
+                                    logoImage: experience.logoImage ?? "",
+                                    companyName: experience.companyName,
+                                    periodWorking: experience.periodWorking,
+                                    monthsWorking: experience.monthsWorking,
+                                    role: experience.role,
+                                    description: experience.description
+                                )
+                            }
+                        }
                     }
                 }
             }
             .padding()
             .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                print("value = \(value)")
                 let offsetY = max(0, value)
                 if scrollOffset != offsetY {
                     scrollOffset = offsetY
@@ -145,34 +123,23 @@ struct WorkView: View {
                     resetScrollTimer()
                 }
             }
+            .onAppear {
+                viewModel.loadCompanyExperience { fetchedExperiences in
+                    DispatchQueue.main.async {
+                        if let fetchedExperiences = fetchedExperiences {
+                            self.experiences = fetchedExperiences
+                            self.isLoading = false
+                        } else {
+                            self.errorMessage = "Failed to load experiences"
+                            self.isLoading = false
+                        }
+                    }
+                }
+            }
         }
         .coordinateSpace(name: "scrollView")
         .background(AppColors.backgroundColor)
     }
-    
-    struct FFFColors: View {
-        var body: some View {
-            HStack(spacing: 2) {
-                Image(systemName: "apple.logo")
-                    .imageScale(.small)
-                    .foregroundStyle(.blue)
-                Image(systemName: "apple.logo")
-                    .imageScale(.small)
-                    .foregroundStyle(.green)
-                Image(systemName: "apple.logo")
-                    .imageScale(.small)
-                    .foregroundStyle(AppColors.mediumGray)
-                Image(systemName: "apple.logo")
-                    .imageScale(.small)
-                    .foregroundStyle(.red)
-                Image(systemName: "apple.logo")
-                    .imageScale(.small)
-                    .foregroundStyle(.yellow)
-            }
-        }
-    }
-    
-    // MARK: - Updating Apple Logo colors
     
     func updateColorForOffset() {
         let index = min(colors.count - 1, max(0, Int(abs(scrollOffset / 15)) % colors.count))

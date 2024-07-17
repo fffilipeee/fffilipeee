@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ExpandableHeader: View {
-    var companyColor: Color
-    var logoImage: String?
-    var companyName: String
-    var periodWorking: String
-    var monthsWorking: String
-    var role: String
-    
+    let companyColor: Color
+    let logoImage: String?
+    let companyName: String
+    let periodWorking: String
+    let monthsWorking: String
+    let role: String
+    let description: String
+
     @State private var isExpanded: Bool = false
     
     var body: some View {
@@ -81,15 +82,13 @@ struct ExpandableHeader: View {
                 }
             }
             
-            ExperienceText()
+            Text(description)
                 .opacity(isExpanded ? 1 : 0)
                 .frame(height: isExpanded ? nil : 0, alignment: .top)
+                .font(.footnote)
+                .padding(.horizontal, 30)
                 .clipped()
         }
         .padding(.bottom, isExpanded ? 30 : 1 )
     }
 }
-
-//#Preview {
-//    ExpandableHeader()
-//}
