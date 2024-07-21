@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "instituto_alfa_e_beto_logo.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
