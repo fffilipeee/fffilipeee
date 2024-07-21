@@ -7,7 +7,7 @@
         "periodWorking": "Present",
         "monthsWorking": "Oct 2022",
         "role": "iOS Developer",
-        "description": "Developing new features for different apps within the company by applying:\n- UIKit\n- SwiftUI\n- MVVM Pattern\n- UI Tests and Unit Tests\n- Accessibility features (mainly Voice Over)\n- Fastlane\n- Firebase\n- Firebase Crashlytics\n- Postman\n- Proxyman\n- SCRUM Environment"
+        "description": "Developing new features for different apps within the company by applying:\n• UIKit\n• SwiftUI\n• MVVM Pattern\n• UI Tests and Unit Tests\n• Accessibility features (mainly Voice Over)\n• Fastlane\n• Firebase\n• Firebase Crashlytics\n• Postman\n• Proxyman\n• SCRUM Environment"
     },
     {
         "id": "e8c5e8a9-6c5e-45e3-b5c9-2b5e4c5d2a1c",
@@ -16,7 +16,7 @@
         "periodWorking": "3 mos",
         "monthsWorking": "Apr 2022\nJul 2022",
         "role": "iOS Developer",
-        "description": "Description for CI&T."
+        "description": "Participated in an iOS Bootcamp using:\n•UIKit\n•SwiftUI\n•MVVM\n•Unit Tests\n\nReason for leaving: relocation to Germany"
     },
     {
         "id": "d1c7e9a6-7d8a-45f3-b5c2-4d8b5e7a1d9f",
@@ -34,7 +34,7 @@
         "periodWorking": "3 yrs, 4 mos",
         "monthsWorking": "Oct 2014\nOct 2018",
         "role": "Co-creator",
-        "description": "Description for pontobarraGAME."
+        "description": "Experiences:\n- Creative process and game concept development\n• Game development, art assets creation, programming assisting (Corona SDK)\n• Creating marketing strategies for game\n• Influencer Marketing Campaigns for games\n• Data and Metrics Analyst (Google Analytic and Flurry)\n• 10+ mobile games released (Google Play and App Store)\n• Three games with more than 100k downloads, and one of them reached over 1M installs\n\nPublished Games:\n• Ja Acabou Jessica?\n• Enem de Memes\n• Lipao Game\n• Menino do Acre\n• Ultra Jump\n• Mega Punch\n• Enem de Gênios\n• Marilene não se mete\n• MatMat\n• DiCaprio Oscar Revenge\n• Pixevolution\n• Mr Mine\n\nHighlights:\n• Over 1.5Mi downloads in total on Google Play and App Store\n• Appearance on the main Brazilian newsletters: G1, O Globo, Exame, Tecmundo, TechTudo, SuperInteressante, Terra, O Povo, Estadão, and many more.\n• Game appearance on big Youtube channels"
     },
     {
         "id": "a1c7e9a6-7d8a-45f3-b5c2-4d8b5e7a1d9f",
@@ -43,6 +43,6 @@
         "periodWorking": "4 months",
         "monthsWorking": "Nov 2015\nFeb 2016",
         "role": "Game Developer Intern",
-        "description": "Description for Instituto Alfa e Beto."
+        "description": "Game development focused on children's games using Unity. To create the images, I used Photoshop and Final Cut Pro to edit small demo videos."
     }
 ]
