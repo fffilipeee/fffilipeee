@@ -94,7 +94,7 @@ struct WorkView: View {
                         
                         if isLoading {
                             Text("Loading...")
-                                .padding()
+                                .padding(.top, 100)
                         } else if let errorMessage = errorMessage {
                             Text("Error: \(errorMessage)")
                         } else {
@@ -164,17 +164,17 @@ struct WorkView: View {
 
 struct StudyView: View {
     var body: some View {
-        ZStack {
-            DottedBackground()
-                .ignoresSafeArea(.all)
-            AchievementCarousel()
-        }
+        Text("Here goes the Study Accomplishments ")
     }
 }
 
 struct AccomplishmentView: View {
     var body: some View {
-        Text("Here goes the accomplishments ")
+        ZStack {
+            DottedBackground()
+                .ignoresSafeArea(.all)
+            AchievementCarousel()
+        }
     }
 }
 
