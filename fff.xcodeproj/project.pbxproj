@@ -13,6 +13,9 @@
 		72E1E78C2C4840FA005068A3 /* JobExperience.json in Resources */ = {isa = PBXBuildFile; fileRef = 72E1E78B2C4840E4005068A3 /* JobExperience.json */; };
 		72E1E78F2C4841EF005068A3 /* JobExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1E78E2C4841EF005068A3 /* JobExperience.swift */; };
 		72E1E7922C48422B005068A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1E7912C48422B005068A3 /* ViewModel.swift */; };
+		72E1E7942C554A4D005068A3 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1E7932C554A45005068A3 /* StudyView.swift */; };
+		72E1E7962C554F19005068A3 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1E7952C554EA3005068A3 /* WorkView.swift */; };
+		72E1E7982C554F47005068A3 /* AccomplishmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1E7972C554F42005068A3 /* AccomplishmentView.swift */; };
 		72E6D53C2C3C6E2200BA3CF6 /* DottedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6D53B2C3C6E1E00BA3CF6 /* DottedBackground.swift */; };
 		72E6D53E2C3C6FA000BA3CF6 /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6D53D2C3C6FA000BA3CF6 /* InvitationCard.swift */; };
 		72E6D5422C3C715500BA3CF6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6D5412C3C715500BA3CF6 /* LaunchScreen.swift */; };
@@ -31,6 +34,9 @@
 		72E1E78B2C4840E4005068A3 /* JobExperience.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JobExperience.json; sourceTree = "<group>"; };
 		72E1E78E2C4841EF005068A3 /* JobExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobExperience.swift; sourceTree = "<group>"; };
 		72E1E7912C48422B005068A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		72E1E7932C554A45005068A3 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		72E1E7952C554EA3005068A3 /* WorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
+		72E1E7972C554F42005068A3 /* AccomplishmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentView.swift; sourceTree = "<group>"; };
 		72E6D53B2C3C6E1E00BA3CF6 /* DottedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedBackground.swift; sourceTree = "<group>"; };
 		72E6D53D2C3C6FA000BA3CF6 /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
 		72E6D5412C3C715500BA3CF6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
@@ -57,6 +63,9 @@
 		1227AD622BEAB51100B88F1C /* Reusable Elements */ = {
 			isa = PBXGroup;
 			children = (
+				72E1E7972C554F42005068A3 /* AccomplishmentView.swift */,
+				72E1E7952C554EA3005068A3 /* WorkView.swift */,
+				72E1E7932C554A45005068A3 /* StudyView.swift */,
 				72E6D53B2C3C6E1E00BA3CF6 /* DottedBackground.swift */,
 				1227AD602BE6E8D900B88F1C /* ExperienceText.swift */,
 				1227AD642BEAB57400B88F1C /* ExpandableHeader.swift */,
@@ -212,7 +221,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				72E6D53E2C3C6FA000BA3CF6 /* InvitationCard.swift in Sources */,
+				72E1E7942C554A4D005068A3 /* StudyView.swift in Sources */,
 				1227AD652BEAB57400B88F1C /* ExpandableHeader.swift in Sources */,
+				72E1E7962C554F19005068A3 /* WorkView.swift in Sources */,
 				72E6D5422C3C715500BA3CF6 /* LaunchScreen.swift in Sources */,
 				D4384B852BDEB421006C824F /* ContentView.swift in Sources */,
 				72E6D53C2C3C6E2200BA3CF6 /* DottedBackground.swift in Sources */,
@@ -220,6 +231,7 @@
 				72E1E78F2C4841EF005068A3 /* JobExperience.swift in Sources */,
 				D4384B832BDEB421006C824F /* fffApp.swift in Sources */,
 				1227AD612BE6E8D900B88F1C /* ExperienceText.swift in Sources */,
+				72E1E7982C554F47005068A3 /* AccomplishmentView.swift in Sources */,
 				D4384B912BDEB7D8006C824F /* Color+Extensions.swift in Sources */,
 				72E1E7922C48422B005068A3 /* ViewModel.swift in Sources */,
 				D4BC812D2BE4288700B5F162 /* AppColors.swift in Sources */,
