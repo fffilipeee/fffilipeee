@@ -16,3 +16,7 @@ struct AccomplishmentView: View {
         }
     }
 }
+
+#Preview {
+    AccomplishmentView()
+}
