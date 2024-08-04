@@ -73,24 +73,28 @@ struct DetailModal: View {
 }
 
 struct AchievementCarousel: View {
-    var achievementCards = [MockedAchievementContentInfo.mock1,
-                        MockedAchievementContentInfo.mock2,
-                        MockedAchievementContentInfo.mock3]
-    
-    @State private var offset: CGFloat = 0
+    @StateObject private var viewModel = ViewModel()
+    @State private var highlights: [Highlight] = []
     
     var body: some View {
         let cardWidth: CGFloat = 160 * 1.3
         let spacing: CGFloat = 20
         let totalWidth = cardWidth + spacing
-
+        
         VStack(spacing: spacing) {
-            ForEach(0..<achievementCards.count, id: \.self) { index in
+            ForEach(highlights) { highlight in
                 AchievementCard(
-                    title: achievementCards[index].title,
-                    image: achievementCards[index].image,
-                    text: achievementCards[index].text
+                    title: highlight.title,
+                    image: highlight.image,
+                    text: highlight.text
                 )
+            }
+        }
+        .onAppear {
+            viewModel.loadHighlights { highlights in
+                if let highlights = highlights {
+                    self.highlights = highlights
+                }
             }
         }
     }
